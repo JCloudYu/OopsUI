@@ -19,14 +19,18 @@ html.viewport-fill.scale-fix.fill-all body, html.viewport-fill.scale-fix.fill-ve
 .parent-fill.fill-all, .parent-fill.fill-horizontally { height:100%; }
 .parent-fill.fill-all { display:inline-block; position:absolute; top:0; left:0; }
 
-/* INFO: Vertical Align Center */
+/* INFO: Vertical Alignment */
+.v-top 		 { }
+.v-top:before { content:' '; display: inline-block; vertical-align:top; height:100%; margin-right:-0.25em; }
+.v-top > * 	 { display:inline-block; vertical-align:top; }
+
 .v-center 		 { }
-.v-center:before { content:' '; display: inline-block; vertical-align: middle; height: 100%; margin-right: -0.25em; }
-.v-center > * 	 { display:inline-block; vertical-align: middle; }
+.v-center:before { content:' '; display: inline-block; vertical-align:middle; height:100%; margin-right:-0.25em; }
+.v-center > * 	 { display:inline-block; vertical-align:middle; }
 
 .v-bottom 		 { }
-.v-bottom:before { content:' '; display: inline-block; vertical-align: bottom; height: 100%; margin-right: -0.25em; }
-.v-bottom > * 	 { display:inline-block; vertical-align: bottom; }
+.v-bottom:before { content:' '; display: inline-block; vertical-align:bottom; height:100%; margin-right:-0.25em; }
+.v-bottom > * 	 { display:inline-block; vertical-align:bottom; }
 
 /* INFO: Text Alignment*/
 .t-left		{ text-align:left;    }
