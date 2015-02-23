@@ -16,8 +16,8 @@ html.viewport-fill.scale-fix.fill-all body, html.viewport-fill.scale-fix.fill-ve
 /* INFO: Content Flow */
 .parent-fill { display:inline-block; position:relative; }
 .parent-fill.fill-all, .parent-fill.fill-horizontally { width:100%; }
-.parent-fill.fill-all, .parent-fill.fill-horizontally { height:100%; }
-.parent-fill.fill-all { display:inline-block; position:absolute; top:0; left:0; }
+.parent-fill.fill-all, .parent-fill.fill-vertically { height:100%; }
+.parent-fill.fill-all { top:0; left:0; }
 
 /* INFO: Vertical Alignment */
 .v-top 		 { }
