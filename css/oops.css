@@ -6,8 +6,8 @@ html, body { position:relative; }
 html.viewport-fill { width:1px; min-width:100%; *width:100%; height:1px; min-height:100%; *height:100%; }
 html.viewport-fill, html.viewport-fill body { overflow:hidden; }
 
-html.viewport-fill body.scrollable, html.viewport-fill body.scroll-x { overflow-x:scroll; }
-html.viewport-fill body.scrollable, html.viewport-fill body.scroll-x { overflow-y:scroll; }
+html.viewport-fill body.scroll-all, html.viewport-fill body.scroll-x { overflow-x:scroll; }
+html.viewport-fill body.scroll-all, html.viewport-fill body.scroll-x { overflow-y:scroll; }
 
 html.viewport-fill.fill-all body, html.viewport-fill.fill-horizontally body	{ width:1px; min-width:100%; *width:100%; }
 html.viewport-fill.fill-all body, html.viewport-fill.fill-vertically body	{ height:1px; min-height:100%; *height:100%; }
