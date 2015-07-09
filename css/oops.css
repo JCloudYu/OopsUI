@@ -4,29 +4,45 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 /* INFO: Platform safe fonts */
 body{ font-size:16px; font-family: Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "標楷體", DFKai-SB, sans-serif; }
 
+/* INFO: Reset default style */
+* { cursor:default; }
+a { text-decoration:none; color:inherit; }
+a, a *, .interactive, .interactive * { cursor:pointer; }
+
+textarea { min-height:150px; }
+
+
+
 /* INFO: Fill Contents */
 html, body { position:relative; }
 html.viewport-fill { width:1px; min-width:100%; *width:100%; height:1px; min-height:100%; *height:100%; }
 html.viewport-fill.fill-horizontally, html.viewport-fill.fill-horizontally body, html.viewport-fill.fill-all, html.viewport-fill.fill-all body { overflow-x:hidden; }
 html.viewport-fill.fill-vertically, html.viewport-fill.fill-vertically body, html.viewport-fill.fill-all, html.viewport-fill.fill-all body { overflow-y:hidden; }
 
-html.viewport-fill body.scroll-all, html.viewport-fill body.scroll-x { overflow-x:scroll; }
-html.viewport-fill body.scroll-all, html.viewport-fill body.scroll-y { overflow-y:scroll; }
+html.viewport-fill body.scroll-all, html.viewport-fill body.scroll-x, html.viewport-fill.fill-horizontally body.free-horizontally, html.viewport-fill.fill-all body.free-horizontally { overflow-x:auto; }
+html.viewport-fill body.scroll-all, html.viewport-fill body.scroll-y, html.viewport-fill.fill-vertically body.free-vertically, html.viewport-fill.fill-all body.free-vertically { overflow-y:auto; }
 
 html.viewport-fill.fill-all body, html.viewport-fill.fill-horizontally body	{ width:1px; min-width:100%; *width:100%; }
 html.viewport-fill.fill-all body, html.viewport-fill.fill-vertically body	{ height:1px; min-height:100%; *height:100%; }
+
 /* Fix insufficient height problem caused by floating point processing of viewport scaling */
 html.viewport-fill.scale-fix.fill-all body, html.viewport-fill.scale-fix.fill-vertically body	{ height:1px; min-height:100%; *height:100%; padding-bottom:1px; }
+
+
 
 /* INFO: BootStrap's clearfix */
 .clearfix:before, .clearfix:after { display: table; content: " "; }
 .clearfix:after, .container:after { clear: both; }
+
+
 
 /* INFO: Content Flow */
 .parent-fill { display:inline-block; position:relative; }
 .parent-fill.fill-all, .parent-fill.fill-horizontally { width:100%; }
 .parent-fill.fill-all, .parent-fill.fill-vertically { height:100%; }
 .parent-fill.fill-all { top:0; left:0; }
+
+
 
 /* INFO: Vertical Alignment */
 .v-top			 { }
@@ -41,9 +57,34 @@ html.viewport-fill.scale-fix.fill-all body, html.viewport-fill.scale-fix.fill-ve
 .v-bottom:before { content:' '; display: inline-block; vertical-align:bottom; height:100%; margin-right:-0.25em; }
 .v-bottom > * 	 { display:inline-block; vertical-align:bottom; }
 
+
+
 /* INFO: Text Alignment*/
 .t-left		{ text-align:left;    }
 .t-right	{ text-align:right;   }
 .t-center	{ text-align:center;  }
 .t-justify	{ text-align:justify; }
 .t-justify.force-justify:after { content:""; display:inline-block; width:100%; }
+
+
+
+/* INFO: Layout style */
+.layout-vertical > .region { margin-bottom:10px; }
+.layout-vertical > .region:last-child { margin-bottom:0; }
+
+.region.layout-vertical > .region { margin-bottom:5px; }
+.region.layout-vertical.margin-10 > .region { margin-bottom:10px; }
+.region.layout-vertical > .region:last-child { margin-bottom:0; }
+
+
+
+/* INFO: Default table style */
+table { border-collapse:separate; }
+
+table { width:100%; border:2px solid #2C3E50; border-radius:5px;  }
+table th, table td { height:32px; padding:0 5px; vertical-align:middle; }
+table th:first-child, table td:first-child { padding-left:10px;  }
+table th:last-child,  table td:last-child  { padding-right:10px; }
+
+table th { background-color:#2C3E50; color:#FFF; }
+table tr:nth-child(2n) td { background-color:#ECF0F1; }
