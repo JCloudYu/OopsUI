@@ -1,0 +1,9 @@
+body[data-state="overlaid"] { overflow:hidden; max-height:100vh; }
+body[data-state="overlaid"] [data-controller="oops"][data-role="overlay"]{ display:block; }
+
+[data-controller="oops"][data-role="overlay"] {
+	display:none;
+	position:fixed; top:0; left:0;
+	width:100vw; height:100vh;
+	background:rgba(0, 0, 0, 0.6);
+}

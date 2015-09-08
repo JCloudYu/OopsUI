@@ -5,7 +5,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 body{ font-size:16px; font-family: Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "標楷體", DFKai-SB, sans-serif; }
 
 /* INFO: Reset default style */
-* { cursor:default; }
+* { cursor:inherit; }
 a { text-decoration:none; color:inherit; }
 a, a *, .interactive, .interactive * { cursor:pointer; }
 
@@ -88,3 +88,13 @@ table th:last-child,  table td:last-child  { padding-right:10px; }
 
 table th { background-color:#2C3E50; color:#FFF; }
 table tr:nth-child(2n) td { background-color:#ECF0F1; }
+
+
+
+/* INFO: Default pagination style */
+.pagination { margin:10px 0; }
+.pagination li { margin-right:0; }
+.pagination li:first-child a, .pagination li:last-child a { border-radius:0; }
+.pagination li:first-child a:hover, .pagination li:last-child a:hover { border-radius:inherit; }
+.pagination li:first-child a, .pagination li:first-child a:hover { border-top-left-radius:6px; border-bottom-left-radius:6px; }
+.pagination li:last-child a, .pagination li:last-child a:hover { border-top-right-radius:6px; border-bottom-right-radius:6px; }
