@@ -1,4 +1,4 @@
-(function($, window) {
+(function(window) {
 	"use strict";
 
 	var
@@ -38,4 +38,4 @@
 	};
 
 	window.oops = curr;
-})(jQuery, window);
+})(window);
