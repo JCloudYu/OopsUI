@@ -8,7 +8,6 @@ body{ font-size:16px; font-family: Arial, "文泉驛正黑", "WenQuanYi Zen Hei"
 * { cursor:inherit; }
 a { text-decoration:none; color:inherit; }
 a, a *, .interactive, .interactive * { cursor:pointer; }
-
 textarea { min-height:150px; }
 
 
@@ -69,12 +68,16 @@ html.viewport-fill.scale-fix.fill-all body, html.viewport-fill.scale-fix.fill-ve
 
 
 /* INFO: Layout style */
-.layout-vertical > .region { margin-bottom:10px; }
-.layout-vertical > .region:last-child { margin-bottom:0; }
+.layout-vertical > .layout-region, .layout-vertical[layout-margin] > .layout-region { margin-bottom:5px; }
+.layout-vertical > .layout-region:last-child, .layout-vertical[layout-margin] > .layout-region:last-child { margin-bottom:0; }
+.layout-vertical[layout-margin="5"]		> .layout-region { margin-bottom:5px; }
+.layout-vertical[layout-margin="10"]	> .layout-region { margin-bottom:10px; }
+.layout-vertical[layout-margin="15"]	> .layout-region { margin-bottom:15px; }
+.layout-vertical[layout-margin="25"]	> .layout-region { margin-bottom:20px; }
 
-.region.layout-vertical > .region { margin-bottom:5px; }
-.region.layout-vertical.margin-10 > .region { margin-bottom:10px; }
-.region.layout-vertical > .region:last-child { margin-bottom:0; }
-
-
-
+.layout-horizontal > .layout-region, .layout-horizontal[layout-margin] > .layout-region { float:left; margin-right:5px; }
+.layout-horizontal > .layout-region:last-child, .layout-horizontal[layout-margin] > .layout-region:last-child { margin-right:0; }
+.layout-horizontal[layout-margin="5"]	> .layout-region { margin-right:5px; }
+.layout-horizontal[layout-margin="10"]	> .layout-region { margin-right:10px; }
+.layout-horizontal[layout-margin="15"]	> .layout-region { margin-right:15px; }
+.layout-horizontal[layout-margin="25"]	> .layout-region { margin-right:20px; }
