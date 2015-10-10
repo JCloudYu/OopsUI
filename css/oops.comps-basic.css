@@ -1,0 +1,18 @@
+/* INFO: Default table style */
+table[layout-type="data-list"] { border-collapse:separate; }
+table[layout-type="data-list"] { width:100%; border:2px solid #2C3E50; border-radius:5px;  }
+table[layout-type="data-list"] th, table td { height:32px; padding:0 5px; vertical-align:middle; }
+table[layout-type="data-list"] th:first-child, table td:first-child { padding-left:10px;  }
+table[layout-type="data-list"] th:last-child,  table td:last-child  { padding-right:10px; }
+table[layout-type="data-list"] th { background-color:#2C3E50; color:#FFF; }
+table[layout-type="data-list"] tr:nth-child(2n) td { background-color:#ECF0F1; }
+
+
+
+/* INFO: Default pagination style */
+.pagination { margin:10px 0; }
+.pagination li { margin-right:0; }
+.pagination li:first-child a, .pagination li:last-child a { border-radius:0; }
+.pagination li:first-child a:hover, .pagination li:last-child a:hover { border-radius:inherit; }
+.pagination li:first-child a, .pagination li:first-child a:hover { border-top-left-radius:6px; border-bottom-left-radius:6px; }
+.pagination li:last-child a, .pagination li:last-child a:hover { border-top-right-radius:6px; border-bottom-right-radius:6px; }
