@@ -81,3 +81,9 @@ html.viewport-fill.scale-fix.fill-all body, html.viewport-fill.scale-fix.fill-ve
 .layout-horizontal[layout-margin="10"]	> .layout-region { margin-right:10px; }
 .layout-horizontal[layout-margin="15"]	> .layout-region { margin-right:15px; }
 .layout-horizontal[layout-margin="25"]	> .layout-region { margin-right:20px; }
+
+
+
+/* INFO: Floating Control */
+.float-left{ float:left; }
+.float-right{ float:right; }
