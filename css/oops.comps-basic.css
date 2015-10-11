@@ -10,7 +10,7 @@ table[layout-type="data-list"] tr:nth-child(2n) td { background-color:#ECF0F1; }
 
 
 /* INFO: Default pagination style */
-.pagination { margin:10px 0; }
+.pagination { margin:0; }
 .pagination li { margin-right:0; }
 .pagination li:first-child a, .pagination li:last-child a { border-radius:0; }
 .pagination li:first-child a:hover, .pagination li:last-child a:hover { border-radius:inherit; }
