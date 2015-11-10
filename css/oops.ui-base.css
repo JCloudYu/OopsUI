@@ -16,3 +16,13 @@ table[layout-type="data-list"] tr:nth-child(2n) td { background-color:#ECF0F1; }
 .pagination li:first-child a:hover, .pagination li:last-child a:hover { border-radius:inherit; }
 .pagination li:first-child a, .pagination li:first-child a:hover { border-top-left-radius:6px; border-bottom-left-radius:6px; }
 .pagination li:last-child a, .pagination li:last-child a:hover { border-top-right-radius:6px; border-bottom-right-radius:6px; }
+
+
+
+/* INFO: Misc Components */
+.transparent-16	 { display:inline-block; width:16px;  height:16px; }
+.transparent-32	 { display:inline-block; width:32px;  height:32px; }
+.transparent-64	 { display:inline-block; width:64px;  height:64px; }
+.transparent-128 { display:inline-block; width:128px; height:128px; }
+.transparent-256 { display:inline-block; width:256px; height:256px; }
+.transparent-512 { display:inline-block; width:512px; height:512px; }
