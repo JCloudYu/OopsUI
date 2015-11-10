@@ -12,12 +12,11 @@
 
 			return collected;
 		},
-		padding: function( number, length, token ) {
-			token = token || ' ';
-			length -= number.toString().length;
-			token = ( length > 0 ) ? new Array( length + 1 ).join( token ) : "";
+		padding: function( target, length, stuffing ) {
+			stuffing = stuffing || ' ';
+			length -= target.toString().length;
 
-			return token + number;
+			return oops.string.repeat( stuffing, length || 0 ) + target;
 		}
 	}, true);
 
