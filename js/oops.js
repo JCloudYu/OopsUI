@@ -28,6 +28,21 @@
 
 
 	window.oops = curr;
+	(function(){
+		var originalPushState = history.pushState || function(){};
+
+		curr.core.expand( window.history, {
+			pushState: function(state) {
+				if (curr.typing.isCallable( window.onpushstate ))
+					window.onpushstate({state: state, type:"pushstate"});
+
+				return originalPushState.apply(history, arguments);
+			},
+			popState: function() {
+				history.back();
+			}
+		});
+	})();
 
 
 	// INFO: Supportive functions
