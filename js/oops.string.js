@@ -17,6 +17,19 @@
 			length -= target.toString().length;
 
 			return oops.string.repeat( stuffing, length || 0 ) + target;
+		},
+		strtr: function( source, replacements ) {
+			var result = source, value, regex;
+			for ( var search in replacements )
+			{
+				if ( !replacements.hasOwnProperty( search ) ) continue;
+
+				value = replacements[ search ];
+				regex = new RegExp( search, 'g' );
+
+				result = result.replace( regex, value );
+			}
+			return result;
 		}
 	}, true);
 
