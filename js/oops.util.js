@@ -40,17 +40,18 @@
 			e.returnValue = false;
 		}
 	}, true );
+
 	oops.core.expand( window, {
-			round10: function( value, exp ) {
-				return decimalAdjust( 'round', value, exp );
-			},
-			floor10: function( value, exp ) {
-				return decimalAdjust( 'floor', value, exp );
-			},
-			ceil10: function( value, exp ) {
-				return decimalAdjust( 'ceil', value, exp );
-			}
-		}, false );
+		round10: function( value, exp ) {
+			return decimalAdjust( 'round', value, exp );
+		},
+		floor10: function( value, exp ) {
+			return decimalAdjust( 'floor', value, exp );
+		},
+		ceil10: function( value, exp ) {
+			return decimalAdjust( 'ceil', value, exp );
+		}
+	}, false );
 
 
 
