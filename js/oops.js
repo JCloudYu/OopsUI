@@ -4,38 +4,53 @@
 	var
 	prev = window.oops || null,
 	curr = function(){};
-	curr.prev	= function(){ return prev; };
-	curr.typing = {
-		isObject: function( value, strict ){
-			var result = ( typeof value === 'object' );
 
-        	strict = strict || false;
-        	result = result || ( strict ? false : (typeof value === 'function'));
-        	result = result && ( strict ? !Array.isArray(value) : true );
-
-			return !!( value && result );
+	propertyExpand( curr, {
+		core: {
+			expand: propertyExpand
 		},
-		isCallable: function( value ){
-			return (typeof value === 'function');
+		typing: {
+			isObject: isObject,
+			isCallable: function( value ){
+				return (typeof value === 'function');
+			},
+			isArray: Array.isArray,
+			isString: function( value ) { return (typeof value === 'string'); }
 		},
-		isArray: Array.isArray,
-		isString: function( value ) { return (typeof value === 'string'); }
-	};
-	curr.core	= {
-		expand: function( target, source, overwrite ){
-			overwrite = overwrite || false;
 
-			if ( !curr.typing.isObject( source ) || !curr.typing.isObject( target ) ) return;
-
-			for ( var prop in source )
-			{
-				if ( !source.hasOwnProperty( prop ) ) continue;
-				if ( !overwrite && target.hasOwnProperty( prop ) ) continue;
-
-				target[ prop ] = source[ prop ];
-			}
+		prev: function(){ return prev; },
+		async: function( callback ){
+			if ( !oops.typing.isCallable( callback ) ) return;
+			setTimeout( callback, 0 );
 		}
-	};
+	}, false );
+
+
 
 	window.oops = curr;
+
+
+	// INFO: Supportive functions
+	function propertyExpand( target, source, overwrite ){
+		overwrite = overwrite || false;
+
+		if ( !isObject( source ) || !isObject( target ) ) return;
+
+		for ( var prop in source )
+		{
+			if ( !source.hasOwnProperty( prop ) ) continue;
+			if ( !overwrite && target.hasOwnProperty( prop ) ) continue;
+
+			target[ prop ] = source[ prop ];
+		}
+	}
+	function isObject( value, strict ) {
+		var result = ( typeof value === 'object' );
+
+		strict = strict || false;
+		result = result || ( strict ? false : (typeof value === 'function'));
+		result = result && ( strict ? !Array.isArray(value) : true );
+
+		return !!( value && result );
+	}
 })(window);
