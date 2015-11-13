@@ -22,15 +22,36 @@
 		async: function( callback ){
 			if ( !oops.typing.isCallable( callback ) ) return;
 			setTimeout( callback, 0 );
-		}
+		},
+		util: {}
 	}, false );
+
+	propertyExpand( curr.util, {
+		each: function( object, callable ){
+			if ( !oops.typing.isCallable( callable ) ) return;
+			if ( !oops.typing.isObject( object ) ) return;
+
+			if ( oops.typing.isArray( object ) )
+			{
+				object.forEach(callable);
+				return;
+			}
+
+
+			for ( var idx in object )
+			{
+				if ( !object.hasOwnProperty( idx ) ) continue;
+				callable( object[idx], idx );
+			}
+		}
+	}, true);
 
 
 
 	window.oops = curr;
 	(function(){
+		// INFO: PuhState Extension
 		var originalPushState = history.pushState || function(){};
-
 		curr.core.expand( window.history, {
 			pushState: function(state) {
 				if (curr.typing.isCallable( window.onpushstate ))

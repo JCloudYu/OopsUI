@@ -38,6 +38,15 @@
 			e = e || window.event;
 			if ( e.preventDefault ) e.preventDefault();
 			e.returnValue = false;
+		},
+		randomStr: function( length, candidates ) {
+			candidates = candidates || "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+			var text = "";
+			while( text.length < length )
+				text += candidates.charAt(Math.floor(Math.random() * candidates.length));
+
+			return text;
 		}
 	}, true );
 
