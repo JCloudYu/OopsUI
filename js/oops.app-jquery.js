@@ -92,6 +92,7 @@
 			var uniqueId = oops.util.randomStr( 32 );
 			while( instances[uniqueId] ) uniqueId = oops.util.randomStr( 32 );
 			instances[ uniqueId ] = inst;
+			inst.id = uniqueId;
 
 
 
