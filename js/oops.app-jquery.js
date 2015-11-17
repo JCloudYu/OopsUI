@@ -198,10 +198,10 @@
 					target = null;
 				}
 
+
 				oops.async(function(){
-					var
-					evtParam = (oops.typing.isObject(evtParam)) ? evtParam : { param: evtParam },
-					event = { type:evtType, system:false, target:target, source:refId };
+					var event = { type:evtType, system:false, target:target, source:refId };
+					evtParam = (oops.typing.isObject(evtParam)) ? evtParam : { param: evtParam };
 
 					oops.core.expand( event, evtParam, false );
 
