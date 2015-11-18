@@ -67,13 +67,16 @@
 	oops.app = oops.app || {};
 	oops.core.expand( oops.app, {
 		initiate: function(){
-			oops.app.initiate = ___DO_NOTHING;
-			oops.util.each( instances, function( inst ){
-				if ( !inst.initiate ) return;
-				oops.async(function(){inst.initiate()});
-			});
+			return new Promise(function( fulfill ){
+				oops.app.initiate = ___DO_NOTHING;
+				oops.util.each( instances, function( inst ){
+					if ( !inst.initiate ) return;
+					oops.async(function(){inst.initiate()});
+				});
 
-			execState = RUN_STATE.RUN;
+				execState = RUN_STATE.RUN;
+				oops.async( fulfill );
+			});
 		},
 		instantiate: function( instanceId, generator ){
 			if ( oops.typing.isCallable(instanceId) )
