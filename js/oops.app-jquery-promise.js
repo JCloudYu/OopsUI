@@ -19,7 +19,7 @@
 	instMap		= {},
 	instances	= {},
 	execState	= RUN_STATE.BOOT,
-	dungling	= {
+	dangling	= {
 		pause: function( target ) {
 
 				if ( !target )
