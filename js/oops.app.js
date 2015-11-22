@@ -121,39 +121,6 @@
 		},
 		tool: {}
 	}, true );
-	oops.core.expand( oops.app.tool, {
-		layoutUI:function(){
-			var viewportWidth	= $( window ).width(),
-			viewportHeight	= $( window ).height();
-
-			viewport = {
-				width: viewportWidth,
-				height: viewportHeight,
-				ratio: viewportWidth / viewportHeight,
-				ratioInv: viewportHeight / viewportWidth
-			};
-
-			$( '.stage' ).each(function(){
-				var
-				self = $( this ),
-				baseWidth	= self.data( 'base-width' ) || viewport.width,
-				baseHeight	= Math.ceil( baseWidth * viewport.ratioInv ),
-				scaleRatio	= viewport.width / baseWidth;
-
-				self.css({
-					width:	baseWidth,
-					height:	baseHeight,
-					webkitTransformOrigin: "0 0 0",
-					transformOrigin: "0 0 0",
-					webkitTransform: oops.string.strtr( 'scale3d( :scale, :scale, 1 )', { ':scale':scaleRatio  } ),
-					transform: oops.string.strtr( 'scale3d( :scale, :scale, 1 )', { ':scale':scaleRatio  } )
-				})
-				.attr({
-					'data-scale': scaleRatio
-				});
-			});
-		}
-	}, true );
 
 
 
