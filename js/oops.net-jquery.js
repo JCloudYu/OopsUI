@@ -1,8 +1,12 @@
 /**
  * Created by JCloudYu on 9/6/15.
+ * Dependency: jQuery
  */
 (function( $ ) {
 	"use strict";
+
+	if ( !$ )
+		throw "This extension is dependent on jQuery! Please refer to https://jquery.com.";
 
 	oops.net = oops.net || {};
 	oops.core.expand( oops.net, (function(){
@@ -29,4 +33,4 @@
 		return ajax;
 	})(), true );
 
-})( jQuery );
+})( window.jQuery );

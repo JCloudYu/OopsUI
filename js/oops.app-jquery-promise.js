@@ -1,8 +1,15 @@
 /**
  * Created by JCloudYu on 11/11/15.
+ * Dependency: jQuery, PromiseJS
  */
-(function( $ ) {
+(function( $, Promise ) {
 	"use strict";
+
+	if ( !Promise )
+		throw "This extension is dependent on PromiseJS! Please refer to https://www.promisejs.org.";
+
+	if ( !$ )
+		throw "This extension is dependent on jQuery! Please refer to https://jquery.com.";
 
 	// region [ constants ]
 	var RUN_STATE = {
@@ -15,7 +22,6 @@
 
 
 	var
-	viewport	= null,
 	instMap		= {},
 	instances	= {},
 	execState	= RUN_STATE.BOOT,
@@ -255,4 +261,4 @@
 	}
 	function ___DO_NOTHING(){}
 
-})( jQuery );
+})( window.jQuery, window.Promise );
