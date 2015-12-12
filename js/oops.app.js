@@ -2,14 +2,11 @@
  * Created by JCloudYu on 11/11/15.
  * Dependency: jQuery, PromiseJS
  */
-(function( $, Promise ) {
+(function( Promise ) {
 	"use strict";
 
 	if ( !Promise )
 		throw "This extension is dependent on PromiseJS! Please refer to https://www.promisejs.org.";
-
-	if ( !$ )
-		throw "This extension is dependent on jQuery! Please refer to https://jquery.com.";
 
 	// region [ constants ]
 	var RUN_STATE = {
@@ -24,7 +21,9 @@
 	var
 	instMap		= {},
 	instances	= {},
-	execState	= RUN_STATE.BOOT,
+	execState	= RUN_STATE.BOOT;
+
+	/*
 	dangling	= {
 		pause: function( target ) {
 
@@ -67,6 +66,7 @@
 				}
 			}
 	};
+	*/
 
 
 
@@ -228,4 +228,4 @@
 	}
 	function ___DO_NOTHING(){}
 
-})( window.jQuery, window.Promise );
+})( window.Promise );
