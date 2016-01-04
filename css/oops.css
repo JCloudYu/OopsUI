@@ -96,4 +96,7 @@ html.viewport-fill.scale-fix.fill-all body, html.viewport-fill.scale-fix.fill-ve
 .display-inline-block { display:inline-block; }
 .display-block { display:block; }
 
+.position-absolute { position:absolute; }
+.position-relative { position:relative; }
+
 .hidden { display:none; }
