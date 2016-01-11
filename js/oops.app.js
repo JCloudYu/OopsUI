@@ -5,7 +5,7 @@
 (function( window ) {
 	"use strict";
 
-	if ( !window.Promise ) __PROMISE_7_0_4();
+	if ( !window.Promise ) __PROMISE_7_0_4( window );
 
 	var
 	// INFO: Constants
@@ -221,7 +221,9 @@
 	}
 	function ___DO_NOTHING(){}
 
-	function __PROMISE_7_0_4(){
+	function __PROMISE_7_0_4( window ){
+		var Promise = null;
+
 		(function e( t, n, r ) {
 			function s( o, u ) {
 				if ( !n[ o ] ) {
@@ -648,5 +650,7 @@
 			} ]
 		}, {}, [ 6 ] );
 		//# sourceMappingURL=/polyfills/promise-7.0.4.js.map
+
+		window.Promise = Promise;
 	}
 })( window );
