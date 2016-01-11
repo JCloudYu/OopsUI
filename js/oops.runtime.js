@@ -11,7 +11,7 @@
 
 	// INFO: Constants
 	var
-	ID_CANDIDATES = ___SHUFFLE_STRING( "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789" ),
+	ID_CANDIDATES = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
 	CANDIDATE_LEN = ID_CANDIDATES.length,
 
 
@@ -22,12 +22,12 @@
 	instances	= {},
 
 	basicId		= (function(){
-		var id = '', count = 8;
+		var id = '', count = 5;
 		while ( count-- > 0 )
 			id += ID_CANDIDATES.charAt( (CANDIDATE_LEN * Math.random()) | 0 );
 		return id;
 	})(),
-	instLoopper	= 0,
+	idRunner	= [ 0 ],
 
 
 
@@ -174,30 +174,31 @@
 
 
 
-	function ___SHUFFLE_STRING( string ) {
-		var a = string.split( '' ),
-		n = a.length;
-
-		for(var i = n - 1; i > 0; i--)
-		{
-			var j = Math.floor( Math.random() * (i + 1));
-			var tmp = a[i];
-			a[i] = a[j];
-			a[j] = tmp;
-		}
-		return a.join("");
-	}
 	function ___GENERATE_INST_ID() {
-		var
-		uniqueId = "",
-		candidate = ++instLoopper;
+		var uniqueId = "", i = 0, val = 0, carriage = 1;
 
-
-		while ( candidate > 0 )
+		while( carriage > 0 )
 		{
-			uniqueId += ID_CANDIDATES.charAt( candidate % CANDIDATE_LEN );
-			candidate = (candidate / CANDIDATE_LEN) | 0;
+			val = idRunner[ i ] + carriage;
+			if ( val >= CANDIDATE_LEN )
+			{
+				idRunner[ i ] = val - CANDIDATE_LEN;
+				idRunner[ i + 1 ] = idRunner[ i + 1 ] || 0;
+				carriage = 1;
+			}
+			else
+			{
+				idRunner[ i ] = val;
+				break;
+			}
+
+			i++;
 		}
+
+
+
+		for ( i=0; i<idRunner.length; i++ )
+			uniqueId = ID_CANDIDATES.charAt( idRunner[i] ) + uniqueId;
 
 		return basicId + uniqueId;
 	}
