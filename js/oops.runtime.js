@@ -107,7 +107,8 @@
 		return {
 			getId: function(){ return uniqueId; },
 			on: function( eventType, callback, sync ) {
-				return ___registerEvent( uniqueId, eventType, callback, sync );
+				___registerEvent( uniqueId, eventType, callback, sync );
+				return this;
 			},
 			fire: function( dest, eventType, args ) {
 				if ( arguments.length <= 2 )
@@ -118,6 +119,7 @@
 				}
 
 				___fireEvent( uniqueId, dest, eventType, args );
+				return this;
 			}
 		};
 	},
@@ -164,6 +166,7 @@
 			}
 
 			___fireEvent( null, dest, eventType, args );
+			return this;
 		},
 		instance: ___getInstance,
 		tool: {}
