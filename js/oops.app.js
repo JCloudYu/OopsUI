@@ -649,7 +649,6 @@
 				asap                     : 3
 			} ]
 		}, {}, [ 6 ] );
-		//# sourceMappingURL=/polyfills/promise-7.0.4.js.map
 
 		window.Promise = Promise;
 	}
