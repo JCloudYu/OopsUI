@@ -114,10 +114,12 @@
 				});
 			},
 			__regEvent: function( eventType, callback, sync ) {
-				if ( !evtQueues.hasOwnProperty( eventType ) )
-					evtQueues[ eventType ] = [];
+				eventType.split( ',' ).forEach(function( type ){
+					if ( !evtQueues.hasOwnProperty( type ) )
+						evtQueues[ type ] = [];
 
-				evtQueues[ eventType ].push({ cb: callback, async: !sync });
+					evtQueues[ type ].push({ cb: callback, async: !sync });
+				});
 			}
 		};
 	},
