@@ -127,7 +127,29 @@
 		return {
 			getId: function(){ return uniqueId; },
 			on: function( eventType, callback, sync ) {
-				___registerEvent( uniqueId, eventType, callback, sync );
+				var
+				args	= Array.prototype.slice.call( arguments ),
+				events  = [], params = [],
+				paramMode = false;
+
+
+				while ( args.length > 0 )
+				{
+					var arg = args.shift();
+
+					if ( !paramMode && !oops.typing.isCallable( arg ) )
+						events.push( arg );
+					else
+					{
+						paramMode = paramMode || true;
+						params.push( arg );
+					}
+				}
+
+				params.unshift( (events.length > 0) ? events.join( ',' ) : null );
+				params.unshift( uniqueId );
+
+				___registerEvent.apply( null, params );
 				return this;
 			},
 			fire: function( eventType, args, async ) {
