@@ -19,9 +19,10 @@
 		},
 
 		prev: function(){ return prev; },
-		async: function( callback ){
+		async: function( callback, latency ){
+			latency = latency || 0;
 			if ( !oops.typing.isCallable( callback ) ) return;
-			setTimeout( callback, 0 );
+			setTimeout( callback, latency );
 		},
 		util: {}
 	}, false );
