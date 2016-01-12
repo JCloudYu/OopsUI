@@ -110,15 +110,12 @@
 				___registerEvent( uniqueId, eventType, callback, sync );
 				return this;
 			},
-			fire: function( dest, eventType, args ) {
-				if ( arguments.length <= 2 )
-				{
-					args = eventType;
-					eventType = dest;
-					dest = null;
-				}
-
-				___fireEvent( uniqueId, dest, eventType, args );
+			fire: function( eventType, args ) {
+				___fireEvent( uniqueId, null, eventType, args );
+				return this;
+			},
+			fireTarget: function( target, eventType, args ) {
+				___fireEvent( uniqueId, target, eventType, args );
 				return this;
 			}
 		};
@@ -157,15 +154,12 @@
 	oops.runtime = oops.runtime || {};
 	oops.core.expand( oops.runtime, {
 		instantiate: __INSTANTIATOR,
-		fire: function( dest, eventType, args ) {
-			if ( arguments.length <= 2 )
-			{
-				args = eventType;
-				eventType = dest;
-				dest = null;
-			}
-
-			___fireEvent( null, dest, eventType, args );
+		fire: function( eventType, args ) {
+			___fireEvent( null, null, eventType, args );
+			return this;
+		},
+		fireTarget: function( target, eventType, args ){
+			___fireEvent( null, target, eventType, args );
 			return this;
 		},
 		instance: ___getInstance,
