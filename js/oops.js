@@ -53,7 +53,7 @@
 				if ( times <= 0 ) return;
 
 				times--;
-				func();
+				func.apply( null, arguments );
 			};
 		}
 	}, true);
