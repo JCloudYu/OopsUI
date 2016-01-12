@@ -40,7 +40,7 @@
 			e.returnValue = false;
 		},
 		randomStr: function( length, candidates ) {
-			candidates = candidates || "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+			candidates = candidates || "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 			var text = "";
 			while( text.length < length )

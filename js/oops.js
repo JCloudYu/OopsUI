@@ -43,6 +43,18 @@
 				if ( !object.hasOwnProperty( idx ) ) continue;
 				callable( object[idx], idx );
 			}
+		},
+		limitExec: function( func, times ) {
+			if ( !oops.typing.isCallable( func ) )
+			return doNothing;
+
+			times = times || 1;
+			return function(){
+				if ( times <= 0 ) return;
+
+				times--;
+				func();
+			};
 		}
 	}, true);
 
@@ -89,4 +101,5 @@
 
 		return !!( value && result );
 	}
+	function doNothing(){}
 })(window);
