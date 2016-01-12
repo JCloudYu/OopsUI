@@ -32,19 +32,34 @@
 
 
 	// INFO: Internal APIs
-	___fireEvent = function( src, dest, type, args ) {
+	___fireEvent = function( src, dest, type, args, async ) {
+
 		if ( !dest )
 		{
-			oops.util.each( instances, function( inst ) {
-				inst.__fireEvent( { type:type, target:null, source:src }, args );
+			oops.util.each( instances, function( inst )
+			{
+				if ( !async )
+				{
+					inst.__fireEvent( { type:type, target:null, source:src }, args );
+					return;
+				}
+
+				oops.async(function(){ inst.__fireEvent( { type:type, target:null, source:src }, args ); });
 			});
 		}
 		else
 		{
-			var inst = instMap[ dest ] || instances[ dest ] || null;
-			if ( !inst ) return;
+			var inst;
+			if ( !(inst = ___getInstance( dest )) ) return;
 
-			inst.__fireEvent( { type:type, target:dest, source:src }, args );
+
+			if ( !async )
+			{
+				inst.__fireEvent( { type:type, target:dest, source:src }, args );
+				return;
+			}
+
+			oops.async(function(){ inst.__fireEvent( { type:type, target:dest, source:src }, args ); });
 		}
 	},
 	___registerEvent = function( srcId, type, cb, sync ) {
@@ -61,7 +76,10 @@
 		return true;
 	},
 	___getInstance = function( targetId ) {
-		var inst = instMap[ targetId ] || instances[ targetId ] || null;
+		return instMap[ targetId ] || instances[ targetId ] || null;
+	},
+	___getInstInterface = function( targetId ) {
+		var inst = ___getInstance( targetId );
 		return (!inst) ? null : inst._interface;
 	},
 
@@ -110,11 +128,13 @@
 				___registerEvent( uniqueId, eventType, callback, sync );
 				return this;
 			},
-			fire: function( eventType, args ) {
+			fire: function( eventType, args, async ) {
+				async = async || false;
 				___fireEvent( uniqueId, null, eventType, args );
 				return this;
 			},
-			fireTarget: function( target, eventType, args ) {
+			fireTarget: function( target, eventType, args, async ) {
+				async = async || false;
 				___fireEvent( uniqueId, target, eventType, args );
 				return this;
 			}
@@ -154,15 +174,17 @@
 	oops.runtime = oops.runtime || {};
 	oops.core.expand( oops.runtime, {
 		instantiate: __INSTANTIATOR,
-		fire: function( eventType, args ) {
-			___fireEvent( null, null, eventType, args );
+		fire: function( eventType, args, async ) {
+			async = async || false;
+			___fireEvent( null, null, eventType, args, async );
 			return this;
 		},
-		fireTarget: function( target, eventType, args ){
-			___fireEvent( null, target, eventType, args );
+		fireTarget: function( target, eventType, args, async ){
+			async = async || false;
+			___fireEvent( null, target, eventType, args, async );
 			return this;
 		},
-		instance: ___getInstance,
+		instance: ___getInstInterface,
 		tool: {}
 	}, true );
 
