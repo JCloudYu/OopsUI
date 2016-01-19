@@ -24,6 +24,51 @@
 			if ( !oops.typing.isCallable( callback ) ) return;
 			setTimeout( callback, latency );
 		},
+		chain: function(){
+			var
+			queue	= {},
+			portal	= function( cate ) {
+				if ( !queue[ cate ] ) return;
+
+
+
+				var args = Array.prototype.slice.call( arguments, 1 );
+
+				queue[ cate ].forEach(function( item ){
+					var trigger = function(){
+						item.cb.apply( null, args );
+					};
+
+
+					if ( !item.async )
+					{
+						trigger();
+						return;
+					}
+
+					oops.async(trigger);
+				});
+
+				return portal;
+			};
+
+			oops.core.expand( portal, {
+				on: function( cate, responder, async ){
+					if ( !oops.typing.isCallable(responder) ) return;
+
+
+					async = (arguments.length > 2) ? !!async : true;
+					queue[ cate ] = queue[ cate ] || [];
+					queue[ cate ].push({
+						cb: responder,
+						async: async
+					});
+				},
+				fire: portal
+			});
+
+			return portal;
+		},
 		util: {}
 	}, false );
 

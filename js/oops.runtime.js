@@ -66,7 +66,7 @@
 		srcId	= srcId || '';
 		type	= type || null;
 		cb		= oops.typing.isCallable(cb) ? cb : null;
-		async	= async || true;
+		async	= (arguments.length > 2) ? !!async : true;
 
 
 		var _interface = instances[ srcId ];
