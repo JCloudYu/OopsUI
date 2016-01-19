@@ -62,17 +62,17 @@
 			oops.async(function(){ inst.__fireEvent( { type:type, target:dest, source:src }, args ); });
 		}
 	},
-	___registerEvent = function( srcId, type, cb, sync ) {
+	___registerEvent = function( srcId, type, cb, async ) {
 		srcId	= srcId || '';
 		type	= type || null;
 		cb		= oops.typing.isCallable(cb) ? cb : null;
-		sync	= sync || false;
+		async	= async || true;
 
 
 		var _interface = instances[ srcId ];
 		if ( !_interface || !type || !cb ) return false;
 
-		_interface.__regEvent( type, cb, sync );
+		_interface.__regEvent( type, cb, async );
 		return true;
 	},
 	___getInstance = function( targetId ) {
@@ -113,12 +113,12 @@
 					});
 				});
 			},
-			__regEvent: function( eventType, callback, sync ) {
+			__regEvent: function( eventType, callback, async ) {
 				eventType.split( ',' ).forEach(function( type ){
 					if ( !evtQueues.hasOwnProperty( type ) )
 						evtQueues[ type ] = [];
 
-					evtQueues[ type ].push({ cb: callback, async: !sync });
+					evtQueues[ type ].push({ cb: callback, async: async });
 				});
 			}
 		};
@@ -126,7 +126,7 @@
 	__KERNEL_JUNCTION	= function( uniqueId ) {
 		return {
 			getId: function(){ return uniqueId; },
-			on: function( eventType, callback, sync ) {
+			on: function( eventType, callback, async ) {
 				var
 				args	= Array.prototype.slice.call( arguments ),
 				events  = [], params = [],
@@ -154,12 +154,12 @@
 			},
 			fire: function( eventType, args, async ) {
 				async = async || false;
-				___fireEvent( uniqueId, null, eventType, args );
+				___fireEvent( uniqueId, null, eventType, args, async );
 				return this;
 			},
 			fireTarget: function( target, eventType, args, async ) {
 				async = async || false;
-				___fireEvent( uniqueId, target, eventType, args );
+				___fireEvent( uniqueId, target, eventType, args, async );
 				return this;
 			}
 		};
