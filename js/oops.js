@@ -63,6 +63,8 @@
 						cb: responder,
 						async: async
 					});
+
+					return portal;
 				},
 				fire: portal
 			});
