@@ -12,19 +12,24 @@
 	oops.core.expand( oops.net, (function(){
 		var ajax = {};
 		[ "get", "post", "put", "delete", "patch" ].forEach(function( method ){
-			ajax[ method ] = function( url, data, callback, type ) {
+			ajax[ method ] = function( url, data, callback, type, headers ) {
 				// Shift arguments if data argument was omitted
 				if ( oops.typing.isCallable( data ) ) {
-					type = type || callback;
+					headers = type;
+					type = callback;
 					callback = data;
 					data = undefined;
 				}
+
+				headers = headers || {};
+				type = type || undefined;
 
 				return $.ajax({
 					url: url,
 					type: method,
 					dataType: type,
 					data: data,
+					headers:headers,
 					success: callback
 				});
 			};
