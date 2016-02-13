@@ -164,33 +164,36 @@
 			}
 		};
 	},
-	__INSTANTIATOR		= function( instanceId, linker ) {
+	__INSTANTIATOR		= function( instanceId, interfaceGenerator ) {
 
 		// INFO: Parameter normalization
 		if ( oops.typing.isCallable(instanceId) )
 		{
-			linker = instanceId;
+			interfaceGenerator = instanceId;
 			instanceId = undefined;
 		}
-
-		if ( !oops.typing.isCallable( linker ) ) return undefined;
 
 
 
 		// INFO: Request linker for instance's api interface
 		// INFO: Expose kernel interface to linker, wrap up and register api interface
 		var
-		uniqueId = ___GENERATE_INST_ID(),
-		junction = __KERNEL_JUNCTION( uniqueId );
+		hasLinker	= oops.typing.isCallable( interfaceGenerator ),
+		linkFunc	= hasLinker ? interfaceGenerator : ___DO_NOTHING,
+		uniqueId	= ___GENERATE_INST_ID(),
+		junction	= __KERNEL_JUNCTION( uniqueId );
 
 		instances[uniqueId] = __INTERFACE_WRAPPER();
-		instances[uniqueId]._interface = linker(junction) || {};
+		instances[uniqueId]._interface = linkFunc(junction) || {};
 
 
 
 		// INFO: Hook the generated instance onto global instance map
 		var instId = instanceId || null;
 		if ( instId ) instMap[ instId ] = instances[uniqueId];
+
+
+		return hasLinker ? undefined : junction;
 	};
 
 
@@ -213,7 +216,7 @@
 	}, true );
 
 
-
+	function ___DO_NOTHING() {}
 	function ___GENERATE_INST_ID() {
 		var uniqueId = "", i = 0, val = 0, carriage = 1;
 
