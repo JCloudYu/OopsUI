@@ -114,10 +114,17 @@
 		var originalPushState = history.pushState || function(){};
 		curr.core.expand( window.history, {
 			pushState: function(state) {
-				if (curr.typing.isCallable( window.onpushstate ))
-					window.onpushstate({state: state, type:"pushstate"});
+				originalPushState.apply( history, arguments );
 
-				return originalPushState.apply(history, arguments);
+				oops.async(function(){
+					var event = document.createEvent( 'Event' );
+					event.state = state;
+					event.initEvent( 'pushstate', true, true );
+					window.dispatchEvent( event );
+
+					if ( curr.typing.isCallable( window.onpushstate ) )
+						window.onpushstate( event );
+				});
 			},
 			popState: function() {
 				history.back();
