@@ -3,6 +3,21 @@
 
 	oops.string = oops.string || {};
 	oops.core.expand( oops.string, {
+		purgeHtml: function( html ){
+			return html.replace(/[\u00A0-\u99999<>\&]/gim, function(i) {
+				 return '&#'+i.charCodeAt(0)+';';
+			});
+		},
+		storeHtml: (function(){
+			var container = document.createElement( "textarea" );
+			return function( inputText ) {
+				container.innerHTML = inputText;
+				return container.value;
+			};
+		})(),
+
+
+
 		repeat: function( token, times ){
 			times = times || 0;
 			token = oops.typing.isCallable(token) ? token : (function(token){ return function(){ return "" + token; } })(token);
