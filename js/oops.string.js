@@ -8,7 +8,7 @@
 				 return '&#'+i.charCodeAt(0)+';';
 			});
 		},
-		storeHtml: (function(){
+		restoreHtml: (function(){
 			var container = document.createElement( "textarea" );
 			return function( inputText ) {
 				container.innerHTML = inputText;
