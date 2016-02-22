@@ -1,8 +1,12 @@
 /* INFO: Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
 
+
+
 /* INFO: Platform safe fonts */
 body{ font-size:16px; font-family: Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "標楷體", DFKai-SB, sans-serif; }
+
+
 
 /* INFO: Reset default style */
 * { cursor:inherit; }
@@ -26,7 +30,6 @@ html.viewport-fill.fill-all body, html.viewport-fill.fill-horizontally body	{ wi
 html.viewport-fill.fill-all body, html.viewport-fill.fill-vertically body	{ height:100%; min-height:100%; *height:100%; }
 html.viewport-fill.size-fix.fill-all body, html.viewport-fill.size-fix.fill-horizontally body	{ width:1px; min-width:100%; *width:100%; }
 html.viewport-fill.size-fix.fill-all body, html.viewport-fill.size-fix.fill-vertically body		{ height:1px; min-height:100%; *height:100%; }
-
 /* Fix insufficient height problem caused by floating point processing of viewport scaling */
 html.viewport-fill.scale-fix.fill-all body, html.viewport-fill.scale-fix.fill-vertically body	{ height:1px; min-height:100%; *height:100%; padding-bottom:1px; }
 
@@ -35,6 +38,7 @@ html.viewport-fill.scale-fix.fill-all body, html.viewport-fill.scale-fix.fill-ve
 /* INFO: BootStrap's clearfix */
 .clearfix:before, .clearfix:after { display: table; content: " "; }
 .clearfix:after, .container:after { clear: both; }
+
 
 
 
@@ -50,11 +54,9 @@ html.viewport-fill.scale-fix.fill-all body, html.viewport-fill.scale-fix.fill-ve
 .v-top			 { }
 .v-top:before	 { content:' '; display: inline-block; vertical-align:top; height:100%; margin-right:-0.25em; }
 .v-top > *		 { display:inline-block; vertical-align:top; }
-
 .v-center 		 { }
 .v-center:before { content:' '; display: inline-block; vertical-align:middle; height:100%; margin-right:-0.25em; }
 .v-center > * 	 { display:inline-block; vertical-align:middle; }
-
 .v-bottom 		 { }
 .v-bottom:before { content:' '; display: inline-block; vertical-align:bottom; height:100%; margin-right:-0.25em; }
 .v-bottom > * 	 { display:inline-block; vertical-align:bottom; }
@@ -78,7 +80,6 @@ html.viewport-fill.scale-fix.fill-all body, html.viewport-fill.scale-fix.fill-ve
 .layout-vertical[layout-margin="10"]	> .layout-region { margin-bottom:10px; }
 .layout-vertical[layout-margin="15"]	> .layout-region { margin-bottom:15px; }
 .layout-vertical[layout-margin="25"]	> .layout-region { margin-bottom:20px; }
-
 .layout-horizontal > .layout-region, .layout-horizontal[layout-margin] > .layout-region { float:left; margin-right:5px; }
 .layout-horizontal > .layout-region:last-child, .layout-horizontal[layout-margin] > .layout-region:last-child { margin-right:0; }
 .layout-horizontal[layout-margin="0"]	> .layout-region { margin-right:0; }
@@ -94,12 +95,19 @@ html.viewport-fill.scale-fix.fill-all body, html.viewport-fill.scale-fix.fill-ve
 .float-right{ float:right; }
 
 
+
 /* INFO: Display Control */
 .display-inline { display:inline; }
 .display-inline-block { display:inline-block; }
 .display-block { display:block; }
-
 .position-absolute { position:absolute; }
 .position-relative { position:relative; }
-
 .hidden { display:none; }
+
+
+
+/* INFO: App related context */
+.projection { width:100%; height:100%; }
+.viewport { width:100%; height:100%; }
+.stage, .scene, .sprite, .view { position:absolute; }
+.stage, .scene, .view { width:100%; height:100%; }
