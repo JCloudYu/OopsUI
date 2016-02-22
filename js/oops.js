@@ -75,6 +75,39 @@
 	}, false );
 
 	propertyExpand( curr.util, {
+		loadScript: (function(){
+			var
+			head = document.getElementsByTagName( 'head' )[0];
+
+			return function( src, attributes, success, error ) {
+				if ( oops.typing.isCallable(attributes) )
+				{
+					error = success;
+					success = attributes;
+					attributes = undefined;
+				}
+
+				attributes	= attributes || {};
+
+				var
+				script	= document.createElement('script');
+
+				if ( oops.typing.isCallable( success ) )
+					script.onload = success;
+
+				if ( oops.typing.isCallable( error ) )
+					script.onerror = error;
+
+				script.type = "application/javascript";
+				script.src = src;
+
+				oops.util.each( attributes, function( val, key ){
+					script.setAttribute( key, val );
+				});
+
+				head.appendChild( script );
+			};
+		})(),
 		each: function( object, callable ){
 			if ( !oops.typing.isCallable( callable ) ) return;
 			if ( !oops.typing.isObject( object ) ) return;
