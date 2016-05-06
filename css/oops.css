@@ -111,3 +111,5 @@ html.viewport-fill.scale-fix.fill-all body, html.viewport-fill.scale-fix.fill-ve
 .viewport { width:100%; height:100%; }
 .stage, .scene, .sprite, .view { position:absolute; }
 .stage, .scene, .view { width:100%; height:100%; }
+
+.smooth-scroll { -webkit-overflow-scrolling:touch; }
